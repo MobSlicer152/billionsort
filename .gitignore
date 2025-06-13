@@ -1,0 +1,27 @@
+*.sln
+*.*proj
+out/
+obj/
+projects*/
+build/
+.xmake/
+.vs/
+vsxmake*/
+fastbuild/Config.bff
+*.fdb
+*.idb
+*.pdb
+private/
+compile_commands.json
+.*cache*/
+*.log
+/.vscode/settings.json
+/.vscode/c_cpp_properties.json
+*cache*
+*.zip
+
+/config.lua
+
+# Added by cargo
+
+/target
