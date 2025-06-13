@@ -13,7 +13,7 @@ using the framebuffer directly as the array, but there was no pleasant way to vi
 values and still have a billion individual ones.
 
 I have an Intel Core i7-13700K and 32GB of RAM, and it takes ~249s in debug mode and 89.44s
-in release to complete the sorting.
+in release to complete the sorting, using MSVC's `std::sort` on Windows 11 10.0.26200.5641
 
 ### Building
 
