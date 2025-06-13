@@ -67,7 +67,7 @@ bool MapFile(const char* name, uint64_t offset, size_t size, FileMapping& map)
 {
 	map.size = size;
 #ifdef SDL_PLATFORM_WINDOWS
-	map.fileHandle = CreateFileA(name, GENERIC_READ | GENERIC_WRITE, FILE_SHARE_READ, nullptr, OPEN_ALWAYS, FILE_ATTRIBUTE_NORMAL | FILE_ATTRIBUTE_TEMPORARY | FILE_ACCESS_RANDOM, nullptr);
+	map.fileHandle = CreateFileA(name, GENERIC_READ | GENERIC_WRITE, FILE_SHARE_READ, nullptr, OPEN_ALWAYS, FILE_ATTRIBUTE_NORMAL | FILE_ATTRIBUTE_TEMPORARY | FILE_FLAG_RANDOM_ACCESS, nullptr);
 	if (!map.fileHandle)
 	{
 		printf("failed to open %s: Win32 error %d\n", name, GetLastError());
