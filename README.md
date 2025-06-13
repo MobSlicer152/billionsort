@@ -10,12 +10,13 @@ the array, and one to map the values to colored pixels on the screen.
 It uses SDL for platform abstraction and graphics, and the STL (`std::shuffle`/`std::sort`)
 for shuffling and sorting the list.
 
-It requires about 8 gigabytes of memory, 4 for the array and 4 for the framebuffer. I tried
-using the framebuffer directly as the array, but there was no pleasant way to visualize the
-values and still have a billion individual ones.
+It uses a memory mapped file to store the data, which is 8GB in total. 4GB for the actual numbers,
+and another 4 for the framebuffer. If you have enough memory to hold the entire file, it probably
+doesn't matter that it's a file.
 
 I have an Intel Core i7-13700K and 32GB of RAM, and it takes ~249s in debug mode and 89.44s
-in release to complete the sorting, using MSVC's `std::sort` on Windows 11 10.0.26200.5641
+in release to complete the sorting, using MSVC's `std::sort` on Windows 11 10.0.26200.5641.
+This was before the memory mapped version.
 
 ### Building
 
