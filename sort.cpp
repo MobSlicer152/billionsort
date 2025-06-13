@@ -112,7 +112,7 @@ bool MapFile(const char* name, uint64_t offset, size_t size, FileMapping& map)
 		return false;
 	}
 
-	map.base = mmap(NULL, map.size, PROT_READ | PROT_WRITE, MAP_SHARED, map.file, (off64_t)offset);
+	map.base = mmap(NULL, map.size, PROT_READ | PROT_WRITE, MAP_SHARED, map.file, (off_t)offset);
 	if (!map.base || map.base == MAP_FAILED)
 	{
 		printf("failed to map %zu bytes from %s: errno %d\n", size, name, errno);
