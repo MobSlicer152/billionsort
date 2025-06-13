@@ -1,0 +1,37 @@
+---
+name: Build
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+permissions:
+  contents: read
+jobs:
+  build:
+    name: ${{matrix.os}}
+    runs-on: ${{matrix.os}}
+    if: ${{ !contains(github.event.head_commit.message, 'skip_ci') }}
+    strategy:
+      matrix:
+        os:
+          - windows-latest
+          - macOS-latest
+          - ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          submodules: recursive
+      - uses: xmake-io/github-action-setup-xmake@v1
+        with:
+          xmake-version: latest
+      - name: configure
+        run: xmake f -m release
+      - name: build
+        run: xmake build
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ${{matrix.os}}
+          path: build/**/sort*
