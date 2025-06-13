@@ -12,6 +12,9 @@ It requires about 8 gigabytes of memory, 4 for the array and 4 for the framebuff
 using the framebuffer directly as the array, but there was no pleasant way to visualize the
 values and still have a billion individual ones.
 
+I have an Intel Core i7-13700K and 32GB of RAM, and it takes ~249s in debug mode and 89.44s
+in release to complete the sorting.
+
 ### Building
 
 Just run xmake:
