@@ -77,7 +77,7 @@ bool MapFile(const char* name, uint64_t offset, size_t size, FileMapping& map)
 
 	LARGE_INTEGER largeSize = {};
 	largeSize.QuadPart = map.size;
-	SetFilePointerEx(map.fileHandle, &largeSize, nullptr, FILE_BEGIN);
+	SetFilePointerEx(map.fileHandle, largeSize, nullptr, FILE_BEGIN);
 	SetEndOfFile(map.fileHandle);
 	SetFilePointer(map.fileHandle, 0, 0, FILE_BEGIN);
 
