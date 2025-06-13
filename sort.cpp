@@ -97,7 +97,7 @@ bool MapFile(const char* name, uint64_t offset, size_t size, FileMapping& map)
 		return false;
 	}
 #else
-	map.file = open(name, O_RDWR | O_CREAT | O_TRUNC | O_LARGEFILE, 0644);
+	map.file = open(name, O_RDWR | O_CREAT | O_TRUNC, 0644);
 	if (map.file < 0)
 	{
 		printf("failed to open %s: errno %d\n", name, errno);
