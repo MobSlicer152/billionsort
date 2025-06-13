@@ -81,7 +81,7 @@ bool MapFile(const char* name, uint64_t offset, size_t size, FileMapping& map)
 	SetEndOfFile(map.fileHandle);
 	SetFilePointer(map.fileHandle, 0, 0, FILE_BEGIN);
 
-	map.mappingHandle = CreateFileMappingA(map.fileHandle, nullptr, PAGE_READWRITE,	largeSize.HighPart, largeSize.LowPart, nullptr);
+	map.mappingHandle = CreateFileMappingA(map.fileHandle, nullptr, PAGE_READWRITE,	0, 0, nullptr);
 	if (!map.mappingHandle)
 	{
 		printf("failed to create file mapping: Win32 error %d\n", GetLastError());
@@ -89,7 +89,7 @@ bool MapFile(const char* name, uint64_t offset, size_t size, FileMapping& map)
 		return false;
 	}
 
-	map.base = MapViewOfFile2(map.mappingHandle, GetCurrentProcess(), 0, nullptr, size, 0, PAGE_READWRITE);
+	map.base = MapViewOfFile(map.mappingHandle, FILE_MAP_ALL_ACCESS, 0, 0, 0);
 	if (!map.base)
 	{
 		printf("failed to map %zu bytes from %s: Win32 error %d\n", size, name, GetLastError());
