@@ -2,7 +2,7 @@
 
 https://github.com/user-attachments/assets/1f9537b7-5dde-4f53-85da-e397c2542ae6
 
-This is sorting visualizer that sorts a billion numbers. It visualizes this by figuring out
+This is a sorting visualizer that sorts a billion numbers. It visualizes this by figuring out
 what position a given value would be at if the array were sorted, and maps the x and y to
 the red and blue of the image. It does this with two worker threads, one to shuffle and sort
 the array, and one to map the values to colored pixels on the screen.
